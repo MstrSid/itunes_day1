@@ -12,6 +12,14 @@
     margin-bottom: 30px;
   }
 
+  &-icon{
+    margin: 5px;
+  }
+
+  &-volume{
+    max-width: 100px;
+  }
+
   &-container {
     position: relative;
     border: 1px solid rgba(#0F1E36, .2);
