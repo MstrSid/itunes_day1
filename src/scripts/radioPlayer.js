@@ -57,7 +57,6 @@ export const radioPlayerInit = () => {
     radioStop.disabled = false;
     changeIconPlay();
     changeActivePlay(parent);
-    console.log(audio.getAttribute);
   });
 
   // работа кнопки radioStop
