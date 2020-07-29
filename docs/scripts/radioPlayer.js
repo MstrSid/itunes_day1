@@ -57,7 +57,6 @@ export const radioPlayerInit = () => {
     radioStop.disabled = false;
     changeIconPlay();
     changeActivePlay(parent);
-    console.log(audio.getAttribute);
   });
 
   // работа кнопки radioStop
@@ -104,5 +103,4 @@ export const radioPlayerInit = () => {
     audio.volume = radioVolume.value / 100;
     toggleVolumeIcon();
   });
-
 };
