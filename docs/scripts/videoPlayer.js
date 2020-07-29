@@ -1,11 +1,5 @@
 export const videoPlayerInit = () => {
   console.log('Video Init');
-  // video-player
-  // video-button__play
-  // video-button__stop
-  // video-time__passed
-  // video-progress
-  // video-time__total
 
   // получаем элементы из DOM для работы
   const videoPlayer = document.querySelector('.video-player');
@@ -16,6 +10,8 @@ export const videoPlayerInit = () => {
   const videoTimeTotal = document.querySelector('.video-time__total');
   const videoFullscreen = document.querySelector('.video-fullscreen');
   const videoVolume = document.querySelector('.video-volume');
+  const videoVolumeDown = document.querySelector('.video-volume__down');
+  const videoVolumeUp = document.querySelector('.video-volume__up');
 
   // смена иконки при воспроизведении/паузе
   const toggleIcon = () => {
@@ -41,6 +37,17 @@ export const videoPlayerInit = () => {
   const stopPlay = () => {
     videoPlayer.pause();
     videoPlayer.currentTime = 0;
+  };
+
+  // переключение иконки громкости в случае отключения звука на volume off
+  const toggleVolumeIcon = () => {
+    if (videoVolume.value == 0) {
+      videoVolumeDown.classList.remove('fa-volume-down');
+      videoVolumeDown.classList.add('fa-volume-off');
+    } else {
+      videoVolumeDown.classList.add('fa-volume-down');
+      videoVolumeDown.classList.remove('fa-volume-off');
+    }
   };
 
   // добавляем ноль спереди при выводе секунд/минут меньше значения 10
@@ -91,10 +98,43 @@ export const videoPlayerInit = () => {
 
   // контроль звука
   videoVolume.addEventListener('input', () => {
+    toggleVolumeIcon();
     videoPlayer.volume = videoVolume.value / 100;
   });
 
   // восстанавливаем заданную нами громкость по дефолту в range
-  
+  videoPlayer.volume = 0.5;
   videoVolume.value = videoPlayer.volume * 100;
+
+  // минимизаци звука или полное отключение при клике на иконку уменьшения громкости
+  videoVolumeDown.addEventListener('click', () => {
+    switch (true) {
+      case videoVolume.value > 1: { // если звук больше минимума, то минимизировать
+        console.log(videoVolume.value);
+        videoVolume.value = 1;
+        videoPlayer.volume = videoVolume.value / 100;
+        break;
+      }
+      case videoVolume.value == 1: { // если звук на минимуме, то отключить
+        videoVolume.value = 0;
+        videoPlayer.volume = videoVolume.value / 100;
+        toggleVolumeIcon();
+        break;
+      }
+      case videoVolume.value == 0: { // если звук отключен, то вернуть минимум
+        videoVolume.value = 1;
+        videoPlayer.volume = videoVolume.value / 100;
+        toggleVolumeIcon();
+        break;
+      }
+    }
+    videoPlayer.volume = videoVolume.value / 100;
+  });
+
+  // включение звука на максимум при клике на иконку увеличения громкости
+  videoVolumeUp.addEventListener('click', () => {
+    videoVolume.value = 100;
+    videoPlayer.volume = videoVolume.value / 100;
+    toggleVolumeIcon();
+  });
 };
