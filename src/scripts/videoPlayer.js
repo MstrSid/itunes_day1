@@ -12,6 +12,8 @@ export const videoPlayerInit = () => {
   const videoVolume = document.querySelector('.video-volume');
   const videoVolumeDown = document.querySelector('.video-volume__down');
   const videoVolumeUp = document.querySelector('.video-volume__up');
+  const videoVolumeOff = document.querySelector('.video-volume__off');
+  let nowVolume; // переменная для текущей позиции громкости
 
   // смена иконки при воспроизведении/паузе
   const toggleIcon = () => {
@@ -103,14 +105,12 @@ export const videoPlayerInit = () => {
   });
 
   // восстанавливаем заданную нами громкость по дефолту в range
-  videoPlayer.volume = 0.5;
-  videoVolume.value = videoPlayer.volume * 100;
+  videoVolume.value = 50;
 
   // минимизаци звука или полное отключение при клике на иконку уменьшения громкости
   videoVolumeDown.addEventListener('click', () => {
     switch (true) {
       case videoVolume.value > 1: { // если звук больше минимума, то минимизировать
-        console.log(videoVolume.value);
         videoVolume.value = 1;
         break;
       }
@@ -121,6 +121,24 @@ export const videoPlayerInit = () => {
       }
       case videoVolume.value == 0: { // если звук отключен, то вернуть минимум
         videoVolume.value = 1;
+        toggleVolumeIcon();
+        break;
+      }
+    }
+    videoPlayer.volume = videoVolume.value / 100;
+  });
+
+  // выключаем звук по клику
+  videoVolumeOff.addEventListener('click', () => {
+    switch (true) {
+      case videoVolume.value > 0: { // если звук больше минимума, то мьютим
+        nowVolume = videoVolume.value;
+        videoVolume.value = 0;
+        toggleVolumeIcon();
+        break;
+      }
+      case videoVolume.value == 0: { // если звук отключен, то возвращаем уровень до мьюта
+        videoVolume.value = nowVolume; // возвращаем уровень до мьюта
         toggleVolumeIcon();
         break;
       }

@@ -9,6 +9,8 @@ export const radioPlayerInit = () => {
   const radioVolume = document.querySelector('.radio-volume');
   const radioVolumeDown = document.querySelector('.radio-volume__down');
   const radioVolumeUp = document.querySelector('.radio-volume__up');
+  const radioVolumeOff = document.querySelector('.radio-volume__off');
+  let nowVolume; // переменная для текущей позиции громкости
 
   const audio = new Audio(); // создаем новый объект аудио и заносим в переменную
   audio.type = 'audio/aac'; // задаем тип (формат) аудио
@@ -72,14 +74,12 @@ export const radioPlayerInit = () => {
   });
 
   // восстанавливаем заданную нами громкость по дефолту в range
-  audio.volume = 0.5;
-  radioVolume.value = audio.volume * 100;
+  radioVolume.value = 50;
 
   // минимизаци звука или полное отключение при клике на иконку уменьшения громкости
   radioVolumeDown.addEventListener('click', () => {
     switch (true) {
       case radioVolume.value > 1: { // если звук больше минимума, то минимизировать
-        console.log(radioVolume.value);
         radioVolume.value = 1;
         break;
       }
@@ -90,6 +90,24 @@ export const radioPlayerInit = () => {
       }
       case radioVolume.value == 0: { // если звук отключен, то вернуть минимум
         radioVolume.value = 1;
+        toggleVolumeIcon();
+        break;
+      }
+    }
+    audio.volume = radioVolume.value / 100;
+  });
+
+  // выключаем звук по клику
+  radioVolumeOff.addEventListener('click', () => {
+    switch (true) {
+      case radioVolume.value > 0: { // если звук больше минимума, то мьютим
+        nowVolume = radioVolume.value;
+        radioVolume.value = 0;
+        toggleVolumeIcon();
+        break;
+      }
+      case radioVolume.value == 0: { // если звук отключен, то возвращаем уровень до мьюта
+        radioVolume.value = nowVolume; // возвращаем уровень до мьюта
         toggleVolumeIcon();
         break;
       }
