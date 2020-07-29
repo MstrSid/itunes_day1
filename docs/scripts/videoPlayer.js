@@ -112,18 +112,15 @@ export const videoPlayerInit = () => {
       case videoVolume.value > 1: { // если звук больше минимума, то минимизировать
         console.log(videoVolume.value);
         videoVolume.value = 1;
-        videoPlayer.volume = videoVolume.value / 100;
         break;
       }
       case videoVolume.value == 1: { // если звук на минимуме, то отключить
         videoVolume.value = 0;
-        videoPlayer.volume = videoVolume.value / 100;
         toggleVolumeIcon();
         break;
       }
       case videoVolume.value == 0: { // если звук отключен, то вернуть минимум
         videoVolume.value = 1;
-        videoPlayer.volume = videoVolume.value / 100;
         toggleVolumeIcon();
         break;
       }

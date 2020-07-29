@@ -36,6 +36,14 @@
     }
   }
 
+  &-icon{
+    margin: 10px;
+  }
+  
+  &-volume{
+    max-width: 200px;
+  }
+
   &-cover__img {
     width: 100%;
     height: 100%;
@@ -137,8 +145,9 @@
   &-stop {
     background-color: transparent;
     border: none;
-    font-size: 56px;
+    font-size: 44px;
     color: #fff;
+    width: 48px;
 
     &:disabled {
       color: #aaa;
