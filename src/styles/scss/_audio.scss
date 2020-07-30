@@ -11,6 +11,14 @@
     justify-content: space-around;
     align-items: center;
   }
+  &-icon{
+    margin: 5px;
+  }
+
+  &-volume{
+    max-width: 100px;
+  }
+
 
   &-cover {
     position: relative;

@@ -1,6 +1,6 @@
-export const videoPlayerInit = () => {
-  console.log('Video Init');
+import {addZero} from './supScripts.js';
 
+export const videoPlayerInit = () => {
   // получаем элементы из DOM для работы
   const videoPlayer = document.querySelector('.video-player');
   const videoButtonPlay = document.querySelector('.video-button__play');
@@ -51,9 +51,6 @@ export const videoPlayerInit = () => {
       videoVolumeDown.classList.remove('fa-volume-off');
     }
   };
-
-  // добавляем ноль спереди при выводе секунд/минут меньше значения 10
-  const addZero = n => n < 10 ? '0' + n : n;
 
   // запуск/пауза видео по клику на сам плеер
   videoPlayer.addEventListener('click', togglePlay);

@@ -1,3 +1,4 @@
+export const audio = new Audio();
 export const radioPlayerInit = () => {
   // получаем элементы из DOM для работы
   const radio = document.querySelector('.radio');
@@ -12,7 +13,7 @@ export const radioPlayerInit = () => {
   const radioVolumeOff = document.querySelector('.radio-volume__off');
   let nowVolume; // переменная для текущей позиции громкости
 
-  const audio = new Audio(); // создаем новый объект аудио и заносим в переменную
+   // создаем новый объект аудио и заносим в переменную
   audio.type = 'audio/aac'; // задаем тип (формат) аудио
   radioStop.disabled = true; // блокируем кнопку Stop
 
