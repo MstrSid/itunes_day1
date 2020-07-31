@@ -23,33 +23,35 @@
 	<meta name="theme-color" content="#ffffff">
 	<title>ЯTunes</title>
 	<script src="scripts/index.js" type="module"></script>
+	<script src="scripts/wow.min.js"></script>
 	<link rel="stylesheet" href="styles/normalize.css">
 	<link rel="stylesheet" href="styles/font-awesome.min.css">
 	<link rel="stylesheet" href="styles/style.min.css">
+	<link rel="stylesheet" href="styles/animate.min.css">
 </head>
 
 <body>
 
 	<a href="index.html">
-		<h1 class="header"><span class="red-text">Я</span>Tunes</h1>
+		<h1 class="header wow fadeInUp"><span class="red-text">Я</span>Tunes</h1>
 	</a>
 
 	<main>
-		<section class="player">
-			<div class="player-btn player-video">Видео</div>
+		<section class="player wow lightSpeedIn">
+			<div class="player-btn player-video wow lightSpeedIn" data-wow-delay="1s">Видео</div>
 
-			<div class="player-btn player-audio">Музыка</div>
+			<div class="player-btn player-audio wow lightSpeedIn" data-wow-delay="1s">Музыка</div>
 
-			<div class="player-btn player-radio">Радио</div>
+			<div class="player-btn player-radio wow lightSpeedIn" data-wow-delay="1s">Радио</div>
 		</section>
 
-		<div class="temp">
+		<div class="temp wow fadeIn">
 			<h2>
-				Медиа портал <span class="red-text">Я</span>Tunes
+				Медиа портал <span class="red-text wow fadeIn" data-wow-delay="1s">Я</span>Tunes
 			</h2>
 		</div>
 
-		<article class="player-block video">
+		<article class="player-block video wow fadeIn">
 			<div class="container">
 				<div class="video-container">
 					<video src="video/rocket_launching.mp4" class="video-player" poster="video/play.svg"></video>
@@ -69,7 +71,7 @@
 			</div>
 		</article>
 
-		<article class="player-block audio">
+		<article class="player-block audio wow fadeIn">
 			<div class="container">
 				<div class="audio-container">
 					<div class="audio-cover">
@@ -100,7 +102,7 @@
 		</article>
 
 
-		<article class="player-block radio">
+		<article class="player-block radio wow fadeIn">
 			<div class="container">
 				<div class="radio-container">
 					<div class="radio-player">

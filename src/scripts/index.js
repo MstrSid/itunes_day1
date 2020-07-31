@@ -16,7 +16,7 @@ const audioButtonPlay = document.querySelector('.audio-button__play');
 const audioPlayer = document.querySelector('.audio-player');
 const radioStop = document.querySelector('.radio-stop');
 const videoPlayer = document.querySelector('.video-player');
-const videoButtonStop = document.querySelector('.video-button__stop');
+const videoButtonPlay = document.querySelector('.video-button__play');
 
 const deactivationPlayer = () => {
   temp.style.display = 'none';
@@ -26,7 +26,7 @@ const deactivationPlayer = () => {
     audioButtonPlay.click();
   }
   if (videoPlayer.paused !== true) { // если видеоплеер играет при переключении таба - останавливаем
-    videoButtonStop.click();
+    videoButtonPlay.click();
   }
   if (radioAudio.paused !== true) { // если радиоплеер не на паузе при переключении таба - ставим на паузу
     radioStop.click();
@@ -40,7 +40,7 @@ playerBtn.forEach((btn, i) => {
     playerBlock[i].classList.add('active');
   });
 });
-
+new WOW().init();
 radioPlayerInit();
 musicPlayerInit();
 videoPlayerInit();
