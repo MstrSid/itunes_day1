@@ -25,8 +25,8 @@ export const musicPlayerInit = () => {
     const isPlayed = audioPlayer.paused; // состояние плеера
     const track = playlist[trackIndex]; // индекс трека
     audioHeader.textContent = track.toUpperCase(); // название трека
-    audioPlayer.src = `audio/${track}.mp3`; // передаем трек на воспроизведение
-    audioImg.src = `audio/${track}.jpg`; // выводим обложку трека
+    audioPlayer.src = `./audio/${track}.mp3`; // передаем трек на воспроизведение
+    audioImg.src = `./audio/${track}.jpg`; // выводим обложку трека
     isPlayed ? audioPlayer.pause() : audioPlayer.play(); // проверяем состояние плеера и запускаем/ставим на паузу
   };
 
